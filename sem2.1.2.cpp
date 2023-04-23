@@ -45,7 +45,7 @@ bool process(processor& q, TuringStrip& st) { // обрабатываем кле
 	if (q == 0) return true;
 
 	else {
-		ProgramCell cell = program[st->a][q]; // находим клетку, соответствующую нашему состоянию в таблице программы и выбираем действие, которое надо совершить с ячейкой
+		ProgramCell cell = program[st->a-1][q]; // находим клетку, соответствующую нашему состоянию в таблице программы и выбираем действие, которое надо совершить с ячейкой
 		st->a = cell.a;
 		q = cell.q;
 		switch (cell.act) {
@@ -61,6 +61,7 @@ bool process(processor& q, TuringStrip& st) { // обрабатываем кле
 			break;
 		}
 	}
+	return false;
 }
 
 void getStrip(ifstream& in, TuringStrip pr, int k) { // короче функция чтобы считать из файла начальное состояние ленты, по циферкам - номер состояния, если 0(что неправильно по условию) - выход из функции
